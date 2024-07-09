@@ -20,6 +20,7 @@ public class TripController {
     @Autowired
     private TripRepository repository;
 
+    //Método de criação da viagem
     @PostMapping
     public ResponseEntity<TripCreateResponse> createTrip(@RequestBody TripRequestPayload payload){
         Trip newTrip = new Trip(payload);
@@ -28,6 +29,7 @@ public class TripController {
         return ResponseEntity.ok(new TripCreateResponse(newTrip.getId()));
     }
 
+    //Método de consultar a viagem criada
     @GetMapping("/{id}")
     public ResponseEntity<Trip> getTripDetails(@PathVariable UUID id){
         Optional<Trip> trip = this.repository.findById(id);
@@ -38,6 +40,7 @@ public class TripController {
         return trip.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    //Método de atualização de uma viagem
     @PutMapping("/{id}")
     public ResponseEntity<Trip> updateTrip(@PathVariable UUID id, @RequestBody TripRequestPayload payload){
         Optional<Trip> trip = this.repository.findById(id);
