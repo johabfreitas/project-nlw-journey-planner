@@ -1,0 +1,10 @@
+{
+	"destination": "João Pessoa, PB",
+	"starts_at":"2025-01-21T08:37:48.734Z",
+	"ends_at": "2025-01-21T08:37:48.734Z",
+	"emails_to_invite":[
+		"johab@rockeatseat.com"
+	],
+	"owner_name": "Johab Freitas",
+	"owner_email": "johab@rockeatseat.com"
+}
