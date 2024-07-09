@@ -18,10 +18,10 @@ public class Participant {
     private UUID id;
 
     @Column(nullable = false)
-    private String ownerName;
+    private String name;
 
     @Column(nullable = false)
-    private String ownerEmail;
+    private String email;
 
     @Column(name = "is_confirmed", nullable = false)
     private Boolean isConfirmed;
