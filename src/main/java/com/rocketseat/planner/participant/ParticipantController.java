@@ -16,7 +16,7 @@ import java.util.UUID;
 public class ParticipantController {
 
     @Autowired
-    private ParticipantRepository repository;
+    private ParticipantRepository participantRepository;
 
     @Autowired
     private ParticipantService participantService;
@@ -25,14 +25,14 @@ public class ParticipantController {
 
     @PostMapping("/{id}/confirm")
     public ResponseEntity<Participant> confirmParticipant(@PathVariable UUID id, @RequestBody ParticipantRequestPayload payload){
-        Optional<Participant> participant = this.repository.findById(id);
+        Optional<Participant> participant = this.participantRepository.findById(id);
 
         if(participant.isPresent()){
            Participant rawParticipant = participant.get();
            rawParticipant.setIsConfirmed(true);
            rawParticipant.setName(payload.name());
 
-           this.repository.save(rawParticipant);
+           this.participantRepository.save(rawParticipant);
 
            return ResponseEntity.ok(rawParticipant);
         }

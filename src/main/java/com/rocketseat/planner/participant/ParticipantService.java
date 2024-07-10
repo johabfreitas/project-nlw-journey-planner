@@ -11,7 +11,7 @@ import java.util.UUID;
 public class ParticipantService {
 
     @Autowired
-    private ParticipantRepository repository;
+    private ParticipantRepository participantRepository;
 
     public void registerParticipantsToEvent(List<String> participantsToInvite, Trip trip){
         List<Participant> participants = participantsToInvite
@@ -19,7 +19,7 @@ public class ParticipantService {
                                         .map(email -> new Participant(email, trip))
                                         .toList();
 
-        this.repository.saveAll(participants);
+        this.participantRepository.saveAll(participants);
 
         System.out.println(participants.get(0).getId());
     }
@@ -27,7 +27,7 @@ public class ParticipantService {
     public ParticipantCreateResponse registerParticipantToEvent(String email, Trip trip){
 
         Participant newParticipant = new Participant(email, trip);
-        this.repository.save(newParticipant);
+        this.participantRepository.save(newParticipant);
 
         return new ParticipantCreateResponse(newParticipant.getId());
     }
@@ -37,7 +37,7 @@ public class ParticipantService {
     public void triggerConfirmationEmailToParticipant(String email){}
 
     public List<ParticipantData> getAllParticipantsFromEvent(UUID tripId){
-        return this.repository.findByTripId(tripId)
+        return this.participantRepository.findByTripId(tripId)
                 .stream()
                 .map(participant -> new ParticipantData(
                         participant.getId(),
