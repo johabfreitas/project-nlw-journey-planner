@@ -19,7 +19,7 @@ public class LinkController {
     private LinkService linkService;
 
     @Autowired
-    private LinkRepository repository;
+    private LinkRepository linkRepository;
 
     @Autowired
     private TripRepository tripRepository;
