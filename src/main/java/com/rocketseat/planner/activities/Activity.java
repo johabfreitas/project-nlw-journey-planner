@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 @Entity
@@ -23,8 +24,16 @@ public class Activity {
     @Column(name = "occurs_at", nullable = false)
     private LocalDateTime accursAt;
 
+    @Column(nullable = false)
+    private String title;
+
     @ManyToOne
     @JoinColumn(name = "trip_id", nullable = false)
     private Trip trip;
 
+    public Activity(String title, String occursAt, Trip trip){
+        this.title = title;
+        this.accursAt = LocalDateTime.parse(occursAt, DateTimeFormatter.ISO_DATE_TIME);
+        this.trip = trip;
+    }
 }
