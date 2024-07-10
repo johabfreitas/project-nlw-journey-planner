@@ -1,9 +1,5 @@
 package com.rocketseat.planner.link;
 
-import com.rocketseat.planner.activity.Activity;
-import com.rocketseat.planner.activity.ActivityData;
-import com.rocketseat.planner.activity.ActivityRequestPayload;
-import com.rocketseat.planner.activity.ActivityResponse;
 import com.rocketseat.planner.trip.Trip;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +21,7 @@ public class LinkService {
         return new LinkResponse(newLink.getId());
     }
 
-    public List<LinkData> getAllActivitiesFromId(UUID tripId){
+    public List<LinkData> getAllLinksFromId(UUID tripId){
         return this.repository.findByTripId(tripId)
                 .stream()
                 .map(links -> new LinkData(
