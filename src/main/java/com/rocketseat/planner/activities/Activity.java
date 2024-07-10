@@ -22,7 +22,7 @@ public class Activity {
     private UUID id;
 
     @Column(name = "occurs_at", nullable = false)
-    private LocalDateTime accursAt;
+    private LocalDateTime occurs_at;
 
     @Column(nullable = false)
     private String title;
@@ -33,7 +33,7 @@ public class Activity {
 
     public Activity(String title, String occursAt, Trip trip){
         this.title = title;
-        this.accursAt = LocalDateTime.parse(occursAt, DateTimeFormatter.ISO_DATE_TIME);
+        this.occurs_at = LocalDateTime.parse(occursAt, DateTimeFormatter.ISO_DATE_TIME);
         this.trip = trip;
     }
 }
