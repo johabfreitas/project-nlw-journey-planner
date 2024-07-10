@@ -1,5 +1,3 @@
-package com.rocketseat.planner.activities;
-
-import java.util.UUID;
+package com.rocketseat.planner.activity;
 
 public record ActivityRequestPayload(String title, String occurs_at) {}
